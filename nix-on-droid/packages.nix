@@ -1,0 +1,36 @@
+pkgs: with pkgs; 
+[
+  #diffutils
+  findutils
+  utillinux
+  tzdata
+  #hostname
+  man
+  gnugrep
+  #gnupg
+  gnused
+  gnutar
+  bzip2
+  gzip
+  xz
+  zip
+  unzip
+  gawk
+  gcc
+  fish
+  oh-my-posh
+  curl
+  git
+  yt-dlp
+  helix
+  android-tools
+  python3
+  ffmpeg
+  iproute2
+  zstd
+  pigz
+  #fastfetch
+  aria2
+  #command-not-found
+  openssh
+]
