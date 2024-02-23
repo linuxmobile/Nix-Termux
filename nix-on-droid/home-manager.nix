@@ -20,4 +20,6 @@
   programs.helix = import ./home-manager/programs/helix.nix;
   
   programs.yt-dlp = import ./home-manager/programs/yt-dlp.nix;
+
+  programs.ssh = import ./home-manager/programs/ssh.nix;
 }
