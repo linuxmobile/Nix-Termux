@@ -1,4 +1,5 @@
-pkgs: with pkgs; 
+pkgs :
+with pkgs;
 [
   #diffutils
   findutils
@@ -31,6 +32,5 @@ pkgs: with pkgs;
   pigz
   #fastfetch
   aria2
-  #command-not-found
   openssh
 ]

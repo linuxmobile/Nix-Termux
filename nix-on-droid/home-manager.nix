@@ -3,58 +3,21 @@
 {
   home.stateVersion = "23.05";
 
-  home.language = {
-    base = "zh_CN.UTF-8";
-  };
+  home.language = import ./home-manager/language.nix;
 
-  home.file = {
-    storage = {
-      enable = true;
-      source = config.lib.file.mkOutOfStoreSymlink "/storage/emulated/0/";
-      target = "storage";
-    };
-  };
+  home.file = import ./home-manager/file.nix config;
   
-  programs.oh-my-posh = {
-    enable = true;
-    enableFishIntegration = true;
-    useTheme = "ys";
-  };
+  programs.aria2 = import ./home-manager/programs/aria2.nix;
+
+  programs.git = import ./home-manager/programs/git.nix;
+
+  programs.oh-my-posh = import ./home-manager/programs/oh-my-posh.nix;
   
-  programs.fish = {
-    enable = true;
-    shellAliases = {
-      helix = "hx";
-    };
-  };
+  programs.fish = import ./home-manager/programs/fish.nix;
   
-  programs.command-not-found = {  
-    enable = true;
-  };
+  programs.command-not-found = import ./home-manager/programs/command-not-found.nix;
   
-  programs.helix = {
-    enable = true;
-    #defaultEditor = true;
-    settings = {
-      theme = "github_dark";
-      editor = {
-        auto-save = true;
-        color-modes = true;
-        indent-guides = {
-          render = true;
-        };
-      };
-    };
-  };
+  programs.helix = import ./home-manager/programs/helix.nix;
   
-  programs.yt-dlp = {
-    enable = true;
-    settings = {
-      embed-thumbnail = true;
-      embed-subs = true;
-      sub-langs = "all";
-      downloader = "aria2c";
-      downloader-args = "aria2c: '-c -x8 -s8 -k1M'";
-    };
-  };
+  programs.yt-dlp = import ./home-manager/programs/yt-dlp.nix;
 }
