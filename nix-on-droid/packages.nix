@@ -1,21 +1,15 @@
 pkgs :
 with pkgs;
 [
-  #diffutils
+  diffutils
   findutils
   utillinux
   tzdata
   #hostname
   man
   gnugrep
-  #gnupg
+  gnupg
   gnused
-  gnutar
-  bzip2
-  gzip
-  xz
-  zip
-  unzip
   gawk
   gcc
   fish
@@ -33,4 +27,5 @@ with pkgs;
   #fastfetch
   aria2
   openssh
+  libarchive
 ]
