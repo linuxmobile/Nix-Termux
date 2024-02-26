@@ -2,7 +2,7 @@
     enable = true;
     #defaultEditor = true;
     settings = {
-      theme = "github_dark";
+      theme = "github_dark_dimmed";
       editor = {
         auto-save = true;
         color-modes = true;
