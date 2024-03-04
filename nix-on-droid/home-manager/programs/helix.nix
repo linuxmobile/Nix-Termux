@@ -1,6 +1,6 @@
 {
     enable = true;
-    #defaultEditor = true;
+    defaultEditor = true;
     settings = {
       theme = "github_dark_dimmed";
       editor = {
@@ -19,6 +19,29 @@
           language-servers = [
             "pyright"
           ];
+          debugger = {
+            name = "debugpy";
+            transport = "stdio";
+            command = "python";
+            args = ["-m" "debugpy.adapter"];
+            templates = [
+              {
+                name = "source";
+                request = "launch";
+                args = {
+                  mode = "debug";
+                  program = "{0}";
+                };
+                completion = [
+                  {
+                    name = "entrypoint";
+                    completion = "filename";
+                    default = ".";
+                  }
+                ];
+              }
+            ];
+          };
         }
       ];
       language-server = {

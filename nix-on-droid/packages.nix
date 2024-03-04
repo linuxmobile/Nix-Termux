@@ -28,4 +28,5 @@ with pkgs;
   aria2
   openssh
   libarchive
+  python3Packages.debugpy
 ]
