@@ -24,7 +24,7 @@ with pkgs;
   iproute2
   zstd
   pigz
-  #fastfetch
+  fastfetch
   aria2
   openssh
   libarchive
