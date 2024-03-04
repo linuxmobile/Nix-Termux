@@ -29,4 +29,5 @@ with pkgs;
   openssh
   libarchive
   python3Packages.debugpy
+  nix-index
 ]

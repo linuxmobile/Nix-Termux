@@ -15,7 +15,7 @@
   
   programs.fish = import ./home-manager/programs/fish.nix;
   
-  programs.command-not-found = import ./home-manager/programs/command-not-found.nix;
+  programs.nix-index = import ./home-manager/programs/nix-index.nix;
   
   programs.helix = import ./home-manager/programs/helix.nix;
   
