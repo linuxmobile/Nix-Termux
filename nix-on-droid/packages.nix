@@ -30,4 +30,7 @@ with pkgs;
   libarchive
   python3Packages.debugpy
   nix-index
+  (nerdfonts.override {
+    fonts = ["DroidSansMono"];
+  })
 ]

@@ -22,7 +22,9 @@
   user.shell = if builtins.elem pkgs.fish config.environment.packages 
                then "${pkgs.fish}/bin/fish" 
                else "${pkgs.bashInteractive}/bin/bash"; 
-
+  # Font
+  terminal.font = "${pkgs.nerdfonts}/share/fonts/opentype/NerdFonts/DroidSansMNerdFont-Regular.otf";
+  
   # Home manager
   home-manager = {
     backupFileExtension = "home-manager.bak";
