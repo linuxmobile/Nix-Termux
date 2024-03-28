@@ -42,6 +42,10 @@
               }
             ];
           };
+          formatter = {
+            command = "ruff";
+            args = ["format" "-"];
+          };
         }
       ];
       language-server = {
