@@ -29,6 +29,7 @@ with pkgs;
   openssh
   libarchive
   python3Packages.debugpy
+  nodePackages.pyright
   nix-index
   (nerdfonts.override {
     fonts = ["DroidSansMono"];
