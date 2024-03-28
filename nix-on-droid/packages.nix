@@ -20,7 +20,6 @@ with pkgs;
   helix
   android-tools
   python3
-  ruff-lsp
   ffmpeg
   iproute2
   zstd

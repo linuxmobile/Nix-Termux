@@ -17,7 +17,7 @@
         {
           name = "python";
           language-servers = [
-            "ruff"
+            "pyright"
           ];
           debugger = {
             name = "debugpy";
@@ -45,8 +45,19 @@
         }
       ];
       language-server = {
-        ruff = {
-          command = "ruff-lsp";
+        pyright = {
+          config = {
+            python.analysis = {
+              autoImportCompletions = true;
+              autoSearchPaths = true;
+              diagnosticMode = "workspace";
+              diagnosticSeverityOverrides = {
+                reportMissingTypeStubs = "warning";
+              };
+              typeCheckingMode = "strict";
+              useLibraryCodeForTypes = true;
+            };
+          };
         };
       };
     };
