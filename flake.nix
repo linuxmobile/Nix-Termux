@@ -1,28 +1,53 @@
 {
-
-  description = "Basic example of Nix-on-Droid system config.";
+  description = "LinuDev Mobile Config Flakes";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "hm";
+    };
+
+    fenix.url = "github:nix-community/fenix/monthly";
+
+    hm = {
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
+    nix-index-db = {
+      url = "github:Mic92/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
+      inputs.home-manager.follows = "hm";
     };
 
+    sss = {
+      url = "github:SergioRibera/sss/";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-on-droid }: {
-
+  outputs = {
+    agenix,
+    fenix,
+    hm,
+    nix-index-db,
+    nix-on-droid,
+    nixpkgs,
+    self,
+    sss,
+  }: {
     nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
-      modules = [ ./nix-on-droid.nix ];
+      modules = [
+        ./hosts
+      ];
     };
-
   };
 }
