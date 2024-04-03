@@ -9,6 +9,7 @@ in {
     ./shell/zsh.nix
 
     ./services/gpg-agent.nix
+    ./services/xdg.nix
   ];
 
   home.sessionVariables = {

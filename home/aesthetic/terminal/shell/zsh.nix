@@ -88,27 +88,27 @@
       zstyle ':completion:files' sort false
 
       ${lib.optionalString config.services.gpg-agent.enable ''
-        gnupg_path=$(ls $XDG_RUNTIME_DIR/gnupg)
-        export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/$gnupg_path/S.gpg-agent.ssh"
+        gnupg_path=$(ls ${config.xdg.dataHome}/gnupg)
+        export SSH_AUTH_SOCK="${config.xdg.dataHome}/gnupg/$gnupg_path/S.gpg-agent.ssh"
       ''}
     '';
 
     shellAliases =
       {
-        installed = "nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq | sk";
-        installedall = "nix-store --query --requisites /run/current-system | sk";
-        cleanup = "sudo nix-collect-garbage --delete-older-than 1d";
-        listgen = "sudo nix-env -p /nix/var/nix/profiles/system --list-generations";
+        installed = "nix-store --query --requisites $(readlink -f ~/.nix-profile) | cut -d- -f2- | sort | uniq | sk";
+        installedall = "nix-store --query --requisites $(readlink -f ~/.nix-profile) | sk";
+        cleanup = "nix-collect-garbage -d";
+        listgen = "nix-on-droid generations";
         nixremove = "nix-store --gc";
-        bloat = "nix path-info -Sh /run/current-system";
+        bloat = "nix path-info -Sh $(readlink -f ~/.nix-profile)";
         c = "clear";
         q = "exit";
         cleanram = "sudo sh -c 'sync; echo 3 > /proc/sys/vm/drop_caches'";
         trimall = "sudo fstrim -va";
         temp = "cd /tmp/";
 
-        test-build = "sudo nixos-rebuild test --flake .#aesthetic";
-        switch-build = "sudo nixos-rebuild switch --flake .#aesthetic";
+        build = "nix-on-droid -F ~/Dev/mobile build";
+        switch = "nix-on-droid -F ~/Dev/mobile switch";
 
         # git
         g = "git";
@@ -130,19 +130,13 @@
         la = "eza -lah --tree";
         ls = "eza -h --git --icons --color=auto --group-directories-first -s extension";
         m = "mkdir -p";
-        md = "inlyne";
         mv = "mv -iv";
-        ps = "procs";
         rm = "rm -iv";
         tmusic = "termusic";
         tree = "eza --tree --icons --tree";
 
         # youtube-dl
         ytmp3 = "yt-dlp --ignore-errors -x --audio-format mp3 -f bestaudio --audio-quality 0 --embed-metadata --embed-thumbnail --output '%(title)s.%(ext)s'";
-
-        # systemctl
-        us = "systemctl --user";
-        rs = "sudo systemctl";
       }
       // lib.optionalAttrs (config.programs.bat.enable == true) {cat = "bat";};
     shellGlobalAliases = {eza = "eza --icons --git";};

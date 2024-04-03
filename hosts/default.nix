@@ -5,7 +5,7 @@
 }: {
   # Packages
   environment = {
-    packages = import ./packages.nix pkgs;
+    # packages = import ./packages.nix pkgs;
     # Backup etc files instead of failing to activate generation if a file already exists in /etc
     etcBackupExtension = ".bak";
   };

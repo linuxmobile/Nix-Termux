@@ -71,7 +71,7 @@
     image_backend="sixel"
     # image_source="auto"
     # image_source="$HOME/.config/neofetch/images/plants.png"
-    ascii_distro="auto"
+    ascii_distro="nixos"
     ascii_colors=(distro)
     ascii_bold="on"
     image_loop="on"

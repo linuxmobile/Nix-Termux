@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   ...
 }: {
   imports = [./aesthetic/terminal];
@@ -10,6 +11,8 @@
     language = import ./aesthetic/language.nix;
 
     file = import ./aesthetic/file.nix config;
+
+    packages = import ./aesthetic/packages.nix pkgs;
   };
 
   manual = {

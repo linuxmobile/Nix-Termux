@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   ...
 }: {
@@ -8,18 +7,21 @@
   };
 
   xdg.configFile."zellij/config.kdl".text = ''
+    default_layout "compact"
     mouse_mode true
     copy_on_select true
     simplified_ui  false
     scrollback_editor "${pkgs.helix}/bin/hx"
     pane_frames false
     on_force_close "detach"
+    default_shell "${pkgs.zsh}/bin/zsh"
 
     ui {
       pane_frames {
         rounded_corners true
       }
     }
+
     themes {
       default {
          bg  "#131313"
